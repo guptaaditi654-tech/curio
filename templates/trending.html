@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Curio - Trending Topics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>🧠 CURIO</h1>
+
+    <h2>🔥 Most Searched Topics</h2>
+
+    <p>Here are the topics Curio users are searching for the most.</p>
+
+    <hr>
+
+    {% if topics %}
+
+        {% for topic in topics %}
+
+            <h3>
+                {{ loop.index }}.
+                <a href="/topic/{{ topic[0] }}?level={{ level }}">
+                    {{ topic[1] }}
+                </a>
+            </h3>
+
+            <p>
+                <b>Category:</b> {{ topic[2] }}
+            </p>
+
+            <p>
+                🔍 <b>{{ topic[3] }}</b> searches
+            </p>
+
+            <hr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>😕 No search data available yet.</p>
+        <p>Search for some topics first!</p>
+
+    {% endif %}
+
+    <br>
+
+    <a href="/">
+        <button>🏠 Home</button>
+    </a>
+
+</body>
+</html>

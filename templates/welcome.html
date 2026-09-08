@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Curio - Welcome</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>🧠 CURIO</h1>
+
+    <h2>Welcome to Curio!</h2>
+
+    <p>
+        A place where curiosity leads to discovery.
+    </p>
+
+    <hr>
+
+    <form action="/start" method="post">
+
+        <h3>👤 What's your name?</h3>
+
+        <input
+            type="text"
+            name="name"
+            placeholder="Enter your name"
+            required
+        >
+
+        <h3>📚 Choose your learning level</h3>
+
+        <label>
+            <input type="radio" name="level" value="Beginner" required>
+            🌱 Beginner
+        </label>
+
+        <br><br>
+
+        <label>
+            <input type="radio" name="level" value="Intermediate">
+            📘 Intermediate
+        </label>
+
+        <br><br>
+
+        <label>
+            <input type="radio" name="level" value="Advanced">
+            🚀 Advanced
+        </label>
+
+        <br><br>
+
+        <button type="submit">🚀 Start Exploring</button>
+
+    </form>
+
+</body>
+</html>

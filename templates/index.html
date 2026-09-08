@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Curio - The First 50</title>
+</head>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<body>
+
+    <h1>🧠 CURIO</h1>
+
+    <h2>The First 50</h2>
+
+    <p>Explore. Discover. Get Curious.</p>
+
+    <hr>
+
+    <h2>Choose Your Learning Level</h2>
+
+    <p>How deeply do you want to explore?</p>
+
+    <br>
+    <a href="/topics?level=Beginner">
+        <button>🌱 Beginner</button>
+    </a>
+
+    <a href="/topics?level=Intermediate">
+        <button>🔬 Intermediate</button>
+    </a>
+
+    <a href="/topics?level=Advanced">
+        <button>🚀 Advanced</button>
+    </a>
+    <hr>
+
+<h2>🎲 Surprise Me</h2>
+
+<p>Don't know what to explore? Let Curio choose for you!</p>
+
+<a href="/surprise">
+    <button>🌱 Surprise Me</button>
+</a>
+    <hr>
+    <hr>
+
+<h2>⭐ My Interests</h2>
+
+<p>View the topics you have saved.</p>
+
+<a href="/interests">
+    <button>⭐ My Interests</button>
+</a>
+    <hr>
+    <hr>
+
+<h2>🔥 Trending Topics</h2>
+
+<p>See what people are curious about!</p>
+
+<a href="/trending">
+    <button>🔥 Most Searched</button>
+</a>
+    <hr>
+    <hr>
+
+<h2>📊 My Stats</h2>
+
+<p>See your Curio learning activity.</p>
+
+<a href="/stats">
+    <button>📊 My Stats</button>
+</a>
+    <hr>
+    <hr>
+
+<h2>👋 Account</h2>
+
+<p>
+    Logged in as:
+    <b>{{ session["name"] }}</b>
+</p>
+
+<a href="/logout">
+    <button>🚪 Logout</button>
+</a>
+    <hr>
+
+<h2>🔍 Search Curio</h2>
+
+<form action="/search" method="get">
+
+    <input
+        type="text"
+        name="q"
+        placeholder="Search for a topic..."
+        required
+    >
+
+    <button type="submit">Search</button>
+
+</form>
+
+</body>
+
+</html>

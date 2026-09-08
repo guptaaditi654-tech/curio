@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Curio - Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>🧠 CURIO</h1>
+
+    <h2>🔍 Search Results</h2>
+
+    <p>Results for: <b>{{ query }}</b></p>
+
+    <hr>
+
+    {% if results %}
+
+        {% for result in results %}
+
+            <h3>
+                <a href="/topic/{{ result[0] }}?level={{ level }}">
+                    {{ result[1] }}
+                </a>
+            </h3>
+
+            <p><b>Category:</b> {{ result[2] }}</p>
+
+            <p>{{ result[3] }}</p>
+
+            <hr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>😕 No topics found.</p>
+
+        <p>Try searching for something else.</p>
+
+    {% endif %}
+
+    <br>
+
+    <a href="/">
+        <button>← Back to Home</button>
+    </a>
+
+</body>
+
+</html>

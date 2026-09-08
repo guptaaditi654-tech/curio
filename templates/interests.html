@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Curio - My Interests</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>🧠 CURIO</h1>
+
+    <h2>⭐ My Interests</h2>
+
+    <p>Topics you have saved for later.</p>
+
+    <hr>
+
+    {% if topics %}
+
+        {% for topic in topics %}
+
+            <h3>
+                <a href="/topic/{{ topic[0] }}?level={{ level }}">
+                    {{ topic[1] }}
+                </a>
+            </h3>
+
+            <p>
+                <b>Category:</b> {{ topic[2] }}
+            </p>
+
+            <p>
+                {{ topic[3] }}
+            </p>
+
+            <hr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>⭐ You haven't added any interests yet.</p>
+
+    {% endif %}
+
+    <br>
+
+    <a href="/">
+        <button>🏠 Home</button>
+    </a>
+
+</body>
+</html>

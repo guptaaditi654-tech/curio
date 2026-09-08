@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Curio - Surprise Me</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>🧠 CURIO</h1>
+
+    <h2>🎲 Surprise Me!</h2>
+
+    <p>Curio has chosen something for you to explore.</p>
+
+    <br>
+
+    <a href="/topic/{{ topic_id }}?level={{ level }}">
+        <button>✨ Show My Topic</button>
+    </a>
+
+    <br><br>
+
+    <a href="/surprise">
+        <button>🎲 Give Me Another Topic</button>
+    </a>
+
+    <br><br>
+
+    <a href="/topics?level={{ level }}">
+        <button>← Back to Topics</button>
+    </a>
+
+</body>
+
+</html>

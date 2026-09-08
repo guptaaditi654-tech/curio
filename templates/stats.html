@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Curio - My Stats</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>🧠 CURIO</h1>
+
+    <h2>📊 My Stats</h2>
+
+    <p>
+        <b>👤 {{ session["name"] }}</b>
+    </p>
+
+    <p>
+        Learning Level:
+        <b>{{ session["level"] }}</b>
+    </p>
+
+    <hr>
+
+    <h3>🧠 Quizzes Attempted</h3>
+    <p>{{ quizzes }}</p>
+
+    <h3>🏆 Average Quiz Score</h3>
+    <p>{{ average_score }}%</p>
+
+    <h3>⭐ Saved Interests</h3>
+    <p>{{ interests_count }}</p>
+
+    <h3>🔍 Topics Explored</h3>
+    <p>{{ topics_explored }}</p>
+
+    <hr>
+
+    <a href="/">
+        <button>🏠 Home</button>
+    </a>
+
+</body>
+</html>

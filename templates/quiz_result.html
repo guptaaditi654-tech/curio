@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Curio - Quiz Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>🧠 CURIO</h1>
+
+    <h2>🎯 Quiz Complete!</h2>
+
+    <hr>
+
+    <h1>{{ score }} / {{ total }}</h1>
+
+    {% if score == total %}
+        <p>🌟 Perfect score! Amazing!</p>
+
+    {% elif score >= 3 %}
+        <p>👏 Great job! You know your stuff!</p>
+
+    {% elif score >= 1 %}
+        <p>👍 Good attempt! Explore the topic again.</p>
+
+    {% else %}
+        <p>📚 Keep exploring and try again!</p>
+    {% endif %}
+
+    <br>
+
+    <a href="/topic/{{ topic_id }}?level={{ level }}">
+        <button>← Back to Topic</button>
+    </a>
+
+    <br><br>
+
+    <a href="/">
+        <button>🏠 Home</button>
+    </a>
+
+</body>
+
+</html>

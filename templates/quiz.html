@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Curio - Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>🧠 CURIO</h1>
+
+    <h2>Quiz</h2>
+
+    <p>Learning Level: <b>{{ level }}</b></p>
+
+    <hr>
+
+    <form action="/submit_quiz" method="post">
+
+        <input type="hidden" name="topic_id" value="{{ topic_id }}">
+        <input type="hidden" name="level" value="{{ level }}">
+
+        {% for q in questions %}
+
+            <input type="hidden"
+                   name="question_ids"
+                   value="{{ q[0] }}">
+
+            <h3>Question {{ loop.index }}</h3>
+
+            <p><b>{{ q[1] }}</b></p>
+
+            <label>
+                <input type="radio"
+                       name="question_{{ q[0] }}"
+                       value="A"
+                       required>
+                {{ q[2] }}
+            </label>
+
+            <br>
+
+            <label>
+                <input type="radio"
+                       name="question_{{ q[0] }}"
+                       value="B">
+                {{ q[3] }}
+            </label>
+
+            <br>
+
+            <label>
+                <input type="radio"
+                       name="question_{{ q[0] }}"
+                       value="C">
+                {{ q[4] }}
+            </label>
+
+            <br>
+
+            <label>
+                <input type="radio"
+                       name="question_{{ q[0] }}"
+                       value="D">
+                {{ q[5] }}
+            </label>
+
+            <hr>
+
+        {% endfor %}
+
+        <button type="submit">Submit Quiz</button>
+
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Curio - Topic</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>🧠 CURIO</h1>
+
+    <p>
+        <b>Learning Level:</b> {{ level }}
+    </p>
+
+    <hr>
+
+    <h2>{{ topic[1] }}</h2>
+
+    <p>
+        <b>Category:</b> {{ topic[2] }}
+    </p>
+
+    <p>
+        {{ topic[3] }}
+    </p>
+
+    <hr>
+
+    <h2>📖 Explanation</h2>
+
+    {% if explanation %}
+        <p>
+            {{ explanation[0] }}
+        </p>
+    {% else %}
+        <p>
+            No explanation is available for this level yet.
+        </p>
+    {% endif %}
+
+    <hr>
+
+    <h2>💡 Fun Fact</h2>
+
+    <p>
+        {{ topic[4] }}
+    </p>
+    <hr>
+    <h2>⭐ My Interests</h2>
+
+    <form action="/add_interest" method="post">
+    <input type="hidden" name="topic_id" value="{{ topic[0] }}">
+    <button type="submit">⭐ Add to My Interests</button>
+    </form>
+
+    <hr>
+    <hr>
+
+    <h2>🧠 Test Your Knowledge</h2>
+
+    <p>
+        Think you know this topic? Take a quick quiz!
+    </p>
+
+    <a href="/quiz/{{ topic[0] }}?level={{ level }}">
+        <button>🧠 Start Quiz</button>
+    </a>
+
+    <hr>
+
+    <h2>🐇 Rabbit Hole</h2>
+
+    <p>
+        Want to explore something related?
+    </p>
+
+    {% if related_topics %}
+
+        {% for related in related_topics %}
+
+            <p>
+                <a href="/topic/{{ related[0] }}?level={{ level }}">
+                    {{ related[1] }}
+                </a>
+            </p>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>No related topics found.</p>
+
+    {% endif %}
+
+    <hr>
+
+    <br>
+
+    <a href="/topics?level={{ level }}">
+        <button>← Back to Topics</button>
+    </a>
+
+    <br><br>
+
+    <a href="/">
+        <button>🏠 Home</button>
+    </a>
+
+</body>
+</html>
