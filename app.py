@@ -8,12 +8,12 @@ app = Flask(__name__)
 app.secret_key = "curio_secret_key"
 
 # Connect to MySQL
-# Connect to MySQL
 db = mysql.connector.connect(
-    host=os.getenv("MYSQL_HOST"),
-    user=os.getenv("MYSQL_USER"),
-    password=os.getenv("MYSQL_PASSWORD"),
-    database=os.getenv("MYSQL_DATABASE")
+    host=os.getenv("MYSQLHOST", os.getenv("MYSQL_HOST")),
+    port=int(os.getenv("MYSQLPORT", "3306")),
+    user=os.getenv("MYSQLUSER", os.getenv("MYSQL_USER")),
+    password=os.getenv("MYSQLPASSWORD", os.getenv("MYSQL_PASSWORD")),
+    database=os.getenv("MYSQLDATABASE", os.getenv("MYSQL_DATABASE"))
 )
 cursor = db.cursor()
 
