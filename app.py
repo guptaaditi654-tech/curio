@@ -16,7 +16,22 @@ db = mysql.connector.connect(
     database=os.getenv("MYSQLDATABASE", os.getenv("MYSQL_DATABASE"))
 )
 cursor = db.cursor()
+@app.before_request
+def reconnect_database():
+    global db, cursor
 
+    try:
+        db.ping(reconnect=True, attempts=3, delay=1)
+    except:
+        db = mysql.connector.connect(
+            host=os.getenv("MYSQLHOST", os.getenv("MYSQL_HOST")),
+            port=int(os.getenv("MYSQLPORT", "3306")),
+            user=os.getenv("MYSQLUSER", os.getenv("MYSQL_USER")),
+            password=os.getenv("MYSQLPASSWORD", os.getenv("MYSQL_PASSWORD")),
+            database=os.getenv("MYSQLDATABASE", os.getenv("MYSQL_DATABASE"))
+        )
+
+    cursor = db.cursor()
 
 # Home Page
 @app.route("/")
